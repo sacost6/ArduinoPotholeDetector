@@ -1,4 +1,17 @@
 
+
+/* Names: Simon Acosta(sacost6), Danny Belmonte(dbelmo2)
+ * Team number: 70
+ * Project Name: Pothole Detector 
+ * 
+ * Abstract: The Pothole Alarm and Register will detect potholes and record it to a MySQL database using a python script. 
+ * It will warn users if it is within 50 feet of a pothole by constantly checking the user’s location and comparing it to previously-stored coordinates in the database. 
+ * The project will also warn users about how much damage the pothole may have done to the vehicle’s suspension using a rating system that will rate the severity of the pothole from 1-5. 
+ * The project was inspired by the rocky Chicagoland streets and Chicago’s (and surrounding suburbs’)  unwillingness to do anything about them.  
+ *  
+ * CANNOT DO A FULL LIVE DEMO BECAUSE GPS DOES NOT CONNECT INSIDE OF SEL
+ * 
+ */
 #include <Adafruit_GPS.h>
 #include <SoftwareSerial.h>
 
@@ -88,6 +101,7 @@ void loop()
      }
      else {
        serialFlush();
+       Serial.println("Accelerometer detected bump!");
        if (GPS.fix) {
           Serial.print(GPS.latitude, 4);
           Serial.print("bump");
