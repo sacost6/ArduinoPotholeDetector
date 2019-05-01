@@ -53,8 +53,8 @@ while True:
     if(mycursor.rowcount!=0):
       for (lat_two) in mycursor:
     
-        temp1 = lat_two[0] + 14
-        temp2 = lat_two[0] - 14;
+        temp1 = lat_two[0] + 1
+        temp2 = lat_two[0] - 1
         query =  ("SELECT latitude, longitude FROM gps_coordinates "
                 "WHERE lat_two BETWEEN %s AND %s")
         val = (temp2, temp1)
@@ -67,16 +67,17 @@ while True:
 
     else:
      query =  ("SELECT latitude, longitude,lat_two, long_two FROM gps_coordinates WHERE longitude=%s")
-     mycursor.execute(query, (long,))
+     mycursor.execute(query, (longi,))
      if(mycursor.rowcount != 0):
-       for (lat_two) in mycursor:
-         temp1 = lat_two + 14
-         temp2 = lat_two - 14;
+       for (long_two) in mycursor:
+         temp1 = long_two + 1
+         temp2 = long_two - 1
          query =  ("SELECT latitude, longitude FROM gps_coordinates "
                    "WHERE long_two BETWEEN %s AND %s")
          val = (temp1, temp2)
          mycursor.execute(query, val)
          if(mycursor.rowcount != 0):
+          ser.write(b'Bump')
           print("you are nearing a bump")
 
 
@@ -86,3 +87,4 @@ while True:
 
     
         
+
