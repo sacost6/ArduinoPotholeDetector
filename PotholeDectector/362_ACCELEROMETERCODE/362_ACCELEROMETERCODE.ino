@@ -1,4 +1,4 @@
-#include <Adafruit_MMA8451.h>
+  #include <Adafruit_MMA8451.h>
 #include <Wire.h>
 #include <Adafruit_Sensor.h>
 Adafruit_MMA8451 mma = Adafruit_MMA8451();
@@ -8,7 +8,7 @@ Adafruit_MMA8451 mma = Adafruit_MMA8451();
 int oldAcc = 0;
 int BUTTON = 5;
 int isPressed = 0;
-float threshold = 0.5;
+float threshold = 1;
 int counter = 0;
 
 const int rs = 12, en = 11, d4 = 5, d5 = 4, d6 = 3, d7 = 2;
@@ -60,7 +60,7 @@ void loop() {
     Serial.write(1); //Write the serial data
     delay(2000);
   } 
-  
+ lcd.clear();
   oldAcc = event.acceleration.z;
   delay(1000);
   
